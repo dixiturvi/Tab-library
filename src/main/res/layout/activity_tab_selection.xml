@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.ArrayList" />
+
+        <variable
+            name="arrTitles"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="manager"
+            type="androidx.fragment.app.FragmentManager" />
+
+        <variable
+            name="viewModel"
+            type="com.example.tabmoduleapp.viewmodel.TabViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".TabSelectionActivity">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/white"
+            viewPager="@{viewPager}"
+            android:background="#00a294"
+            app:tabTextColor="@android:color/darker_gray">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            arrFragment="@{viewModel.fragment}"
+            arrTitles="@{arrTitles}"
+            manager="@{manager}"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    </LinearLayout>
+</layout>
